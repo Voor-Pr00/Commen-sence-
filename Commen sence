@@ -71,7 +71,7 @@ local achievementGiver = loadstring(game:HttpGet("https://raw.githubusercontent.
 
 ---====== Display achievement ======---
 achievementGiver({
-    Title = "	Survival from Common Sence",
+    Title = "Survival from Common Sence",
     Desc = "So smoke.",
     Reason = "Encounter Common Sence",
     Image = "rbxassetid://139528160080039"
