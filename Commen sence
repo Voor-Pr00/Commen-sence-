@@ -1,6 +1,6 @@
 game.ReplicatedStorage.GameData.LatestRoom.Changed:Connect(function()
 if game:GetService("ReplicatedStorage").GameData.Floor.Value == "Hotel" then
-if game.ReplicatedStorage.GameData.LatestRoom.Value == 50 then
+if game.ReplicatedStorage.GameData.LatestRoom.Value == 3 then
 
 ---====== Load spawner ======---
 
@@ -66,6 +66,16 @@ entity:SetCallback("OnSpawned", function()
     print("Entity has spawned")
 game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
 game.Workspace.CommonSense:Destroy()
+---====== Load achievement giver ======---
+local achievementGiver = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors/Custom%20Achievements/Source.lua"))()
+
+---====== Display achievement ======---
+achievementGiver({
+    Title = "	Survival from Common Sence",
+    Desc = "So smoke.",
+    Reason = "Encounter Common Sence",
+    Image = "rbxassetid://139528160080039"
+})
 end)
 
 entity:SetCallback("OnDamagePlayer", function(newHealth)
