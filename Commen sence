@@ -88,6 +88,19 @@ entity:SetCallback("OnDamagePlayer", function(newHealth)
 	end
 end)
 
+entity:SetCallback("CrucifixionOverwrite", function()
+    print("Custom crucifixion callback")
+---====== Load achievement giver ======---
+local achievementGiver = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors/Custom%20Achievements/Source.lua"))()
+
+---====== Display achievement ======---
+achievementGiver({
+    Title = "Kill Common Sence",
+    Desc = "I want read a book!!!",
+    Reason = "Crucifix on Common Sence",
+    Image = "rbxassetid://139528160080039"
+})
+end)
 ---====== Run entity ======---
 
 entity:Run()
