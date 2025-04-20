@@ -49,7 +49,7 @@ local entity = spawner.Create({
 	},
 	Crucifixion = {
 		Enabled = true,
-		Range = 40,
+		Range = 60,
 		Resist = false,
 		Break = true
 	},
@@ -86,20 +86,6 @@ entity:SetCallback("OnDamagePlayer", function(newHealth)
 		game.Players.LocalPlayer.Character.Humanoid:TakeDamage(1000)
         game:GetService("ReplicatedStorage").GameStats["Player_".. game.Players.LocalPlayer.Name].Total.DeathCause.Value = "Common Sense"
 	end
-end)
-
-entity:SetCallback("CrucifixionOverwrite", function()
-    print("Custom crucifixion callback")
----====== Load achievement giver ======---
-local achievementGiver = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors/Custom%20Achievements/Source.lua"))()
-
----====== Display achievement ======---
-achievementGiver({
-    Title = "Kill Common Sence",
-    Desc = "I want read a book!!!",
-    Reason = "Crucifix on Common Sence",
-    Image = "rbxassetid://139528160080039"
-})
 end)
 ---====== Run entity ======---
 
