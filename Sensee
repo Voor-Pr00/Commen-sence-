@@ -1,0 +1,103 @@
+game.ReplicatedStorage.GameData.LatestRoom.Changed:Connect(function()
+if game:GetService("ReplicatedStorage").GameData.Floor.Value == "Hotel" then
+if game.ReplicatedStorage.GameData.LatestRoom.Value == 50 then
+
+local Spawner = loadstring(game:HttpGet('https://raw.githubusercontent.com/MuhXd/DoorSuff/main/OtherSuff/DoorEntitySpawn%2BSource'))()
+
+local entity = Spawner.createEntity({
+    CustomName = "Common Sense",
+    Model = "https://github.com/PABMAXICHAC/doors-monsters-models/raw/main/Common_Sense2.rbxm",
+    Speed = 49,
+    DelayTime = 5,
+    HeightOffset = 2,
+    CanKill = true,
+    NoDieOnCrouching = false,
+    NoHiding = false,
+    AntiCrucifix = false,
+    KillRange = 15,
+    OneRoom = false,
+    DieOnLook = false,
+    BreakLights = true,
+    BackwardsMovement = true,
+    MovementDeath = {
+        false,
+        '1',
+    },
+    FlickerLights = {
+        true,
+        1
+    },
+    Cycles = {
+        Min = 100,
+        Max = 100,
+        WaitTime = 0.01,
+    },
+    CamShake = {
+       False,
+        {3.5, 20, 0.1, 1},
+        100,
+    },
+    Jumpscare = {
+       False,
+        {
+            Type = "1",
+            Image1 = "rbxassetid://",
+            Image2 = "rbxassetid://",
+            Shake = false,
+            Sounds = {
+                "",
+                { Volume = 10 },
+            },
+            Sound2 = {
+                "",
+                { Volume = 10 },
+            },
+            Flashing = {
+                False,
+                Color3.fromRGB(0, 0, 0),
+            },
+            Tease = {
+                false,
+                Min = 1,
+                Max = 1,
+            },
+        },
+    },
+    Color = 'GuidingLight',
+    DiffrentMessages = true,
+    CustomDialog = {
+        {"You die by whipser", "how to suviver?", "hide and user your skill", "so many eyes."},
+        {"Stop Dieing"},
+        {"Bruh", "Use what you have learned from Rush!"},
+        {"It seems like Template is causing quite the ruckus...", "Hide in a closet or bed as quickly as possible!"},
+        {"I have told You What to do", "YOU JUST HAVE A SKILL ISSUE"}
+    }
+})
+
+entity.Debug.OnEntitySpawned = function()
+    print("Entity has spawned:")
+game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
+game.Workspace.CommonSense:Destroy()
+
+local achievementGiver = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors/Custom%20Achievements/Source.lua"))()
+
+---====== Display achievement ======---
+achievementGiver({
+    Title = "The smoking",
+    Desc = "Let Find Book With me?",
+    Reason = "Encounter and survival from Common Sense",
+    Image = "rbxassetid://139528160080039"
+})
+end
+
+entity.Debug.OnDeath = function()
+    warn("Player has died.")
+game.Players.LocalPlayer.Character.Humanoid:TakeDamage(1000)
+game.ReplicatedStorage.GameStats["Player_".. game.Players.LocalPlayer.Name].Total.DeathCause.Value = "Common Sense"
+end
+
+-- Run the entity
+Spawner.runEntity(entity)
+end
+end
+end)
