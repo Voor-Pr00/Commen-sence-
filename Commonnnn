@@ -1,12 +1,16 @@
+game.ReplicatedStorage.GameData.LatestRoom.Changed:Connect(function()
+if game:GetService("ReplicatedStorage").GameData.Floor.Value == "Hotel" then
+if game.ReplicatedStorage.GameData.LatestRoom.Value == 50 then
+
 local Spawner = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors/Entity%20Spawner/V1/Source.lua"))()
  
 ---====== Create entity ======---
  
 local entity = Spawner.createEntity({
     CustomName = "Common sense",
-    Model = "https://github.com/PABMAXICHAC/doors-monsters-models/raw/main/Common_Sense2.rbxm?raw=true",
+    Model = "rbxassetid://136276859671592",
     Speed = 40,
-    MoveDelay = 2,
+    MoveDelay = 6,
     HeightOffset = 2,
     CanKill = true,
     KillRange = 15,
@@ -35,7 +39,7 @@ local entity = Spawner.createEntity({
 entity.Debug.OnEntitySpawned = function()
     print("Entity has spawned")
 game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
-game.Workspace.Commonsense:Destroy()
+game.Workspace.CommonSense:Destroy()
 local achievementGiver = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors/Custom%20Achievements/Source.lua"))()
 
 ---====== Display achievement ======---
@@ -55,3 +59,7 @@ end
 
 ---====== Run entity ======---
 Spawner.runEntity(entity)
+
+end
+end
+end)
