@@ -1,0 +1,57 @@
+local Spawner = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors/Entity%20Spawner/V1/Source.lua"))()
+ 
+---====== Create entity ======---
+ 
+local entity = Spawner.createEntity({
+    CustomName = "Common sense",
+    Model = "https://github.com/PABMAXICHAC/doors-monsters-models/raw/main/Common_Sense2.rbxm?raw=true",
+    Speed = 40,
+    MoveDelay = 2,
+    HeightOffset = 2,
+    CanKill = true,
+    KillRange = 15,
+    SpawnInFront = true,
+    ShatterLights = true,
+    FlickerLights = {
+        Enabled = true,
+        Duration = 1
+    },
+    Cycles = {
+        Min = 100,
+        Max = 100,
+        Delay = 0.01
+    },
+    CamShake = {
+        Enabled = true,
+        Values = {1.5, 20, 0.1, 1},
+        Range = 100
+    },
+    ResistCrucifix = false,
+    BreakCrucifix = true
+})
+ 
+---====== Debug ======---
+ 
+entity.Debug.OnEntitySpawned = function()
+    print("Entity has spawned")
+game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
+game.Workspace.Commonsense:Destroy()
+local achievementGiver = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors/Custom%20Achievements/Source.lua"))()
+
+---====== Display achievement ======---
+achievementGiver({
+    Title = "I Will Destroy The Library",
+    Desc = "Let Find Book With me?",
+    Reason = "Encounter and survival from Common Sense",
+    Image = "rbxassetid://139528160080039"
+})
+end
+
+ entity.Debug.OnDeath = function()
+    print("Player has died")
+game.Players.LocalPlayer.Character.Humanoid:TakeDamage(1000)
+game.ReplicatedStorage.GameStats["Player_".. game.Players.LocalPlayer.Name].Total.DeathCause.Value = "Common Sense"
+end
+
+---====== Run entity ======---
+Spawner.runEntity(entity)
