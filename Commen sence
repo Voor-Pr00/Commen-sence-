@@ -12,7 +12,7 @@ local entity = spawner.Create({
 	Entity = {
 		Name = "Common Sense",
 		Asset = "https://github.com/PABMAXICHAC/doors-monsters-models/raw/main/Common_Sense2.rbxm",
-		HeightOffset = 2
+		HeightOffset = 1
 	},
 	Lights = {
 		Flicker = {
