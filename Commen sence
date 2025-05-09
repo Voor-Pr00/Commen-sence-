@@ -69,8 +69,8 @@ local achievementGiver = loadstring(game:HttpGet("https://raw.githubusercontent.
 
 ---====== Display achievement ======---
 achievementGiver({
-    Title = "The Smoking is destroy",
-    Desc = "I just want read a book.",
+    Title = "Im just use my Common Sense.",
+    Desc = "Let me find the book alone.",
     Reason = "Use Crucifix on Common Sense",
     Image = "rbxassetid://139528160080039"
 })
