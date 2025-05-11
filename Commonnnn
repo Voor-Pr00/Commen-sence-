@@ -38,6 +38,35 @@ local entity = Spawner.createEntity({
  
 entity.Debug.OnEntitySpawned = function()
     print("Entity has spawned")
+if game.Workspace:WaitForChild("RepentanceNEW", 750) then
+function GitAud(soundgit,filename)
+    SoundName=tostring(SoundName)
+    local url=soundgit
+    local FileName = filename
+    writefile(FileName..".mp3", game:HttpGet(url))
+    return (getcustomasset or getsynasset)(FileName..".mp3")
+end
+
+function CustomGitSound(soundlink, vol, filename)
+    local sound = Instance.new("Sound")
+    sound.SoundId = GitAud(soundlink, filename)
+    sound.Parent = workspace
+    sound.Volume = 4
+   sound:Play()
+end
+
+CustomGitSound("https://raw.githubusercontent.com/Voorproo/Eye/refs/heads/main/DOORS-UNUSED-SOUNDTRACK-Stress%20(mp3cut.net).mp3", 1, "crucifix")
+wait(5)
+local achievementGiver = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors/Custom%20Achievements/Source.lua"))()
+
+---====== Display achievement ======---
+achievementGiver({
+    Title = "Im just use my Common Sense.",
+    Desc = "Let me find the book alone.",
+    Reason = "Use Crucifix on Common Sense",
+    Image = "rbxassetid://139528160080039"
+})
+
 game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
 game.Workspace.CommonSense:Destroy()
 local achievementGiver = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors/Custom%20Achievements/Source.lua"))()
@@ -49,6 +78,7 @@ achievementGiver({
     Reason = "Encounter and survival from Common Sense",
     Image = "rbxassetid://139528160080039"
 })
+end
 end
 
  entity.Debug.OnDeath = function()
