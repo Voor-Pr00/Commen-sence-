@@ -33,7 +33,7 @@ local entity = spawner.Create({
 	Movement = {
 		Speed = 45,
 		Delay = 5,
-		Reversed = false
+		Reversed = true
 	},
 	Rebounding = {
 		Enabled = true,
@@ -49,7 +49,7 @@ local entity = spawner.Create({
 	},
 	Crucifixion = {
 		Enabled = true,
-		Range = 80,
+		Range = 200,
 		Resist = false,
 		Break = true
 	},
@@ -64,18 +64,20 @@ local entity = spawner.Create({
 
 entity:SetCallback("OnSpawned", function()
     print("Entity has spawned")
-game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
-game.Workspace.CommonSense:Destroy()
+if game.Workspace:WaitForChild("RepentanceNEW") then
 ---====== Load achievement giver ======---
 local achievementGiver = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors/Custom%20Achievements/Source.lua"))()
 
 ---====== Display achievement ======---
 achievementGiver({
-    Title = "Just use my common sense",
-    Desc = "So smoke.",
-    Reason = "Encounter Common Sense",
+    Title = "I’m just using my common sense",
+    Desc = "Let me find book alone.",
+    Reason = "Used Crucifix on Common Sense",
     Image = "rbxassetid://139528160080039"
 }) 
+end
+game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
+game.Workspace.CommonSense:Destroy()
 end)
 
 entity:SetCallback("OnDamagePlayer", function(newHealth)
@@ -84,7 +86,6 @@ entity:SetCallback("OnDamagePlayer", function(newHealth)
 	else
 		print("Entity has damaged the player")
 		game.Players.LocalPlayer.Character.Humanoid:TakeDamage(1000)
-loadstring(game:HttpGet("https://raw.githubusercontent.com/Voorproo/spawnnn/refs/heads/main/Common"))()
         game:GetService("ReplicatedStorage").GameStats["Player_".. game.Players.LocalPlayer.Name].Total.DeathCause.Value = "Common Sense"
 	end
 end)
