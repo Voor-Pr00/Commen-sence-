@@ -4,7 +4,7 @@ if game.ReplicatedStorage.GameData.LatestRoom.Value == 50 then
 
 ---====== Load spawner ======---
 
-local spawner = loadstring(game:HttpGet("https://raw.githubusercontent.com/Voorproo/Fogroom/refs/heads/main/Spawner"))()
+local spawner = loadstring(game:HttpGet("https://raw.githubusercontent.com/Voor-Pr00/Fogroom/refs/heads/main/Spawner"))()
 
 ---====== Create entity ======---
 
