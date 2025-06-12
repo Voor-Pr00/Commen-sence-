@@ -64,18 +64,6 @@ local entity = spawner.Create({
 
 entity:SetCallback("OnSpawned", function()
     print("Entity has spawned")
-if game.Workspace:WaitForChild("RepentanceNEW") then
----====== Load achievement giver ======---
-local achievementGiver = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors/Custom%20Achievements/Source.lua"))()
-
----====== Display achievement ======---
-achievementGiver({
-    Title = "I’m just using my common sense",
-    Desc = "Let me find book alone.",
-    Reason = "Used Crucifix on Common Sense",
-    Image = "rbxassetid://139528160080039"
-}) 
-end
 game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
 game.Workspace.CommonSense:Destroy()
 end)
